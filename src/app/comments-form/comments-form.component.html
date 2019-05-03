@@ -1,0 +1,46 @@
+<h1 class="display-4 text-center">Welcome to Quotes</h1>
+
+<div class="row">
+    <div class="col-sm-6 offset-sm-3 text-center">
+    <br>
+    <form (ngSubmit)='submitQuote(newQuote)' #Form='ngForm' class="form-inlin justify-content-center">
+      <div class="form-group">
+
+        <label for="name">Name</label>
+        <input type="text"  class="form-control" id="name" [(ngModel)]="newQuote.name" name="name" #name="ngModel" placeholder="Please enter your name" required>
+<div [hidden]="name.valid || name.pristine" class="alert alert-danger">
+  <p> Name is Required</p>
+
+</div>
+      </div>
+      <div class="form-group">
+
+        <label for="name">Author Name</label>
+        <input type="text" required class="form-control" id="author" placeholder="Please enter name of quote author" [(ngModel)]="newQuote.author" name="author" #author="ngModel">
+<div [hidden]="author.valid || author.pristine" class="alert alert-danger">
+  <p> Quote Author is Required</p>
+
+</div>
+      </div>
+      <div class="form-group">
+
+        <label for="description">Quote</label>
+        <textarea class="form-control" id="myQuote" rows="4" [(ngModel)]="newQuote.myquote" name="myQuote" #myQuote="ngModel" placeholder="Please enter your quote" required></textarea>
+  <div [hidden]="myQuote.valid || myQuote.pristine" class="alert alert-danger">
+    <p> Quote is Required</p>
+
+  </div>
+      </div>
+      <div class="form-group">
+        <label for="complete">Date:</label>
+        <input type='date' id="complete" [(ngModel)]="newQuote.postdate" name="postDate" #postDate="ngModel" required>
+<div [hidden]="postDate.valid || postDate.pristine" class="alert alert-danger">
+  <p> Complete Date is Required</p>
+  </div>
+        </div>
+        <button type="submit" class="btn btn-success" >Submit Your Quote</button>
+
+    </form>
+    </div>
+  </div>
+  <br>

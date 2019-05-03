@@ -1,0 +1,25 @@
+<div class="container">
+
+<app-comments-form (addQuote)="addNewQuote($event)"></app-comments-form>
+<div class="row" >
+  <div class="col-sm-6 col-md-6 col-lg-6 text-center" *ngFor="let quote of quotes;let i='index'">
+  <div class="card-group">
+  <div class="card" >
+    <div class="card-body text-success mb-3">
+    <h5 class="card-title">Quote by {{quote.author}}</h5>
+
+    <p class="card-text" id="{{i}}">"{{quote.myquote}}"</p>
+    </div>
+    <div class="card-footer">
+    <p>Submitted {{quote.postdate|dateCount}} hours ago</p>
+    <div class="showmore">
+      <button class="btn btn-primary" (click)='toggleDetails(i)'>Display More</button>
+    </div>
+    <div class="row" *ngIf="quote.showDescription">
+      <app-comments-details [quote]='quote' (isComplete)='deleteQuote($event,i)'></app-comments-details>
+    </div>
+    </div>
+  </div>
+</div>
+</div>
+
